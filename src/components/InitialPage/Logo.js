@@ -19,7 +19,7 @@ export default function Logo() {
 const LogoBox = styled.div`
     width: 180px;
     height: 180px;
-    margin: 68px auto 32px auto;
+    margin: 138px auto 32px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

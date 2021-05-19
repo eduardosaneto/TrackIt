@@ -1,6 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import Navbar from '../Navbar';
 import PageTitle from '../PageTitle';
+import Footer from '../Footer';
 import { BsTrash } from "react-icons/bs";
 
 export default function Habits() {
@@ -8,7 +10,8 @@ export default function Habits() {
     const location = useLocation();
 
     return (
-        <>
+        <Section>
+            <Navbar />
             <PageTitle location={location}/>
             {/* <Message>
                 <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
@@ -33,9 +36,23 @@ export default function Habits() {
                 </span> */}
                 <BsTrash className="erase" />
             </Content>
-        </>
+            <Footer />
+        </Section>
     );
 }
+
+const Section = styled.section `
+  width: 100%;
+  /* max-width: 375px; */
+  min-height: 100vh;
+  height: 100%;
+  /* margin: 0px auto; */
+  padding: 70px 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f2f2f2;
+`;
 
 // const Message = styled.div `
 //     width: 100%;

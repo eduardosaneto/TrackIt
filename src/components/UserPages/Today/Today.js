@@ -1,6 +1,8 @@
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import Navbar from '../Navbar';
 import PageTitle from '../PageTitle';
+import Footer from '../Footer';
 import { FaCheck } from "react-icons/fa";
 
 export default function Today() {
@@ -8,7 +10,8 @@ export default function Today() {
     const location = useLocation();
 
     return (
-        <>
+        <Section>
+            <Navbar />
             <PageTitle location={location}/>
             <Content>
                 <div>
@@ -20,9 +23,23 @@ export default function Today() {
                     <FaCheck className="check"/>
                 </div>
             </Content>
-        </>
+            <Footer />
+        </Section>
     );
 }
+
+const Section = styled.section `
+  width: 100%;
+  /* max-width: 375px; */
+  min-height: 100vh;
+  height: 100%;
+  /* margin: 0px auto; */
+  padding: 70px 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f2f2f2;
+`;
 
 const Content = styled.div `
     height: 94px;

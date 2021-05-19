@@ -1,47 +1,43 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
-import Logo from './components/InitialPage/Logo';
 import Login from './components/InitialPage/Login';
 import Register from './components/InitialPage/Register';
-import Navbar from './components/UserPages/Navbar';
-import Footer from './components/UserPages/Footer';
 import Today from './components/UserPages/Today/Today';
 import Habits from './components/UserPages/Habits/Habits';
 import History from './components/UserPages/History/History';
+import UserContext from './context/UserContext';
 
 export default function App() {
+
+  const [user,setUser] = useState("");
 
   return (
     <>
       <GlobalStyle />
       <Router>
         <Switch>
-          <InitialSection>
-            <Logo />
-            <Route path="/" exact>
-              <Login />
-            </Route>
-            <Route path="/cadastro" exact>
-              <Register />
-            </Route>  
-          </InitialSection>
-        </Switch>
-        <Switch> 
-          <UserSection>
-            <Navbar />
-            <Route path="/hoje" exact>
-              <Today />
-            </Route>
-            <Route path="/habitos" exact>
-              <Habits />
-            </Route>
-            <Route path="/historico" exact>
-              <History />
-            </Route>
-            <Footer />
-          </UserSection>
+          <Section>
+            <UserContext.Provider value={{user, setUser}}>
+              <Route path="/" exact>
+                <Login /> 
+              </Route>
+              <Route path="/cadastro" exact>
+                <Register />
+              </Route>  
+              <Route path="/hoje" exact>
+                <Today />
+              </Route>
+              <Route path="/habitos" exact>
+                <Habits />
+              </Route>
+              <Route path="/historico" exact>
+                <History />
+              </Route>
+            </UserContext.Provider>
+          </Section>
         </Switch>
       </Router>
     </>
@@ -102,30 +98,26 @@ const GlobalStyle = createGlobalStyle `
 
 `;
 
-const InitialSection = styled.section `
-  width: 100%;
-  max-width: 375px;
-  height: 100%;
-  margin: 0px auto;
-  padding-left: 36px;
-  padding-right: 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: blue;
-  display: none !important;
-`;
+// const Section = styled.section `
+//   width: 100%;
+//   max-width: 375px;
+//   height: 100%;
+//   margin: 0px auto;
+//   padding-left: 36px;
+//   padding-right: 36px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   /* display: none !important; */
+// `;
 
-const UserSection = styled.section `
+const Section = styled.section `
   width: 100%;
   max-width: 375px;
   min-height: 100vh;
   height: 100%;
   margin: 0px auto;
-  padding: 70px 17px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f2f2f2;
-  /* display: none !important; */
 `;
