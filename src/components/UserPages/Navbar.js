@@ -1,11 +1,18 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
-import TrackItLogo from '../../images/TrackItLogo.JPG';
+import UserContext from '../../context/UserContext';
 
 export default function Navbar() {
+
+    const { user } = useContext(UserContext);
+
+    console.log(user.image);
+    
     return (
         <Header>
             <h1>TrackIt</h1>
             <div>
+                <img src={user.image} alt={user.id} />
             </div>
         </Header>
     );
@@ -35,6 +42,12 @@ const Header = styled.header `
         width: 51px;
         height: 51px;
         border-radius: 98.5px;
-        background-image: url(${TrackItLogo});
+        /* background-image: url(${props => props.picture}); */
+    } 
+
+    img {
+        width: 51px;
+        height: 51px;
+        border-radius: 98.5px;
     }
 `;

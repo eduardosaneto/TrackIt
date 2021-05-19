@@ -4,8 +4,6 @@ import { useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import Button from './Button';
 
-{/* <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} /> */}
-
 export default function Login() {
 
     const location = useLocation();

@@ -22,10 +22,8 @@ export default function History() {
 
 const Section = styled.section `
   width: 100%;
-  /* max-width: 375px; */
   min-height: 100vh;
   height: 100%;
-  /* margin: 0px auto; */
   padding: 70px 17px;
   display: flex;
   flex-direction: column;

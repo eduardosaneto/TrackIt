@@ -16,30 +16,30 @@ export default function App() {
 
   return (
     <>
-      <GlobalStyle />
-      <Router>
-        <Switch>
-          <Section>
-            <UserContext.Provider value={{user, setUser}}>
-              <Route path="/" exact>
-                <Login /> 
-              </Route>
-              <Route path="/cadastro" exact>
-                <Register />
-              </Route>  
-              <Route path="/hoje" exact>
-                <Today />
-              </Route>
-              <Route path="/habitos" exact>
-                <Habits />
-              </Route>
-              <Route path="/historico" exact>
-                <History />
-              </Route>
-            </UserContext.Provider>
-          </Section>
-        </Switch>
-      </Router>
+      <UserContext.Provider value={{user, setUser}}>
+        <GlobalStyle />
+        <Router>
+          <Switch>
+            <Section>
+                <Route path="/" exact>
+                  <Login /> 
+                </Route>
+                <Route path="/cadastro" exact>
+                  <Register />
+                </Route>  
+                <Route path="/hoje" exact>
+                  <Today />
+                </Route>
+                <Route path="/habitos" exact>
+                  <Habits />
+                </Route>
+                <Route path="/historico" exact>
+                  <History />
+                </Route>
+            </Section>
+          </Switch>
+        </Router>
+      </UserContext.Provider>
     </>
   );
 }
@@ -53,12 +53,15 @@ const GlobalStyle = createGlobalStyle `
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   textarea:focus, button:focus, li:focus, select:focus {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
   }
-
 
   button {
     font-family: 'Lexend Deca', sans-serif;
@@ -97,19 +100,6 @@ const GlobalStyle = createGlobalStyle `
   }
 
 `;
-
-// const Section = styled.section `
-//   width: 100%;
-//   max-width: 375px;
-//   height: 100%;
-//   margin: 0px auto;
-//   padding-left: 36px;
-//   padding-right: 36px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   /* display: none !important; */
-// `;
 
 const Section = styled.section `
   width: 100%;
