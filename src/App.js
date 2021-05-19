@@ -8,6 +8,8 @@ import Register from './components/InitialPage/Register';
 import Navbar from './components/UserPages/Navbar';
 import Footer from './components/UserPages/Footer';
 import Today from './components/UserPages/Today/Today';
+import Habits from './components/UserPages/Habits/Habits';
+import History from './components/UserPages/History/History';
 
 export default function App() {
 
@@ -32,12 +34,12 @@ export default function App() {
             <Route path="/hoje" exact>
               <Today />
             </Route>
-            {/* <Route path="/habitos" exact>
+            <Route path="/habitos" exact>
               <Habits />
             </Route>
             <Route path="/historico" exact>
               <History />
-            </Route> */}
+            </Route>
             <Footer />
           </UserSection>
         </Switch>
@@ -64,38 +66,39 @@ const GlobalStyle = createGlobalStyle `
 
   button {
     font-family: 'Lexend Deca', sans-serif;
+    border: none;
   }
 
   input {
-      width: 303px;
-      height: 45px;
-      border: 1px solid #D5D5D5;
-      border-radius: 5px;
-      margin-bottom: 8px;
-      padding-left: 11px;
-      font-family: 'Lexend Deca', sans-serif;
-      font-size: 20px;
-      line-height: 25px;
-      color: #2c2c2c;
+    width: 303px;
+    height: 45px;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    padding-left: 11px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+    color: #666;
     }
 
-    input:focus {
-      border: 1px solid #2c2c2c;
-      box-shadow: 0 0 0 0;
-      outline: 0;
-    }
+  input:focus {
+    border: 1px solid #2c2c2c;
+    box-shadow: 0 0 0 0;
+    outline: 0;
+  }
 
-    ::placeholder {
-    color: #DBDBDB;
-    }
+  ::placeholder {
+  color: #DBDBDB;
+  }
 
-    h1 {
-      font-family: 'Playball', sans-serif;
-    } 
+  h1 {
+    font-family: 'Playball', sans-serif;
+  } 
 
-    h2, p {
-      font-family: 'Lexend Deca', sans-serif;
-    }
+  h2, h3, h4, p, button {
+    font-family: 'Lexend Deca', sans-serif;
+  }
 
 `;
 
@@ -118,10 +121,11 @@ const UserSection = styled.section `
   max-width: 375px;
   min-height: 100vh;
   height: 100%;
+  margin: 0px auto;
   padding: 70px 17px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #e5e5e5;
+  background: #f2f2f2;
   /* display: none !important; */
 `;

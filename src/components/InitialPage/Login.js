@@ -6,8 +6,6 @@ export default function Login() {
 
     const location = useLocation();
 
-    console.log(location);
-
     return (
         <>
             <DataBox>

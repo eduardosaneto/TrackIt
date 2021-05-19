@@ -5,8 +5,6 @@ import Button from './Button';
 export default function Register() {
 
     const location = useLocation();
-    
-    console.log(location);
 
     return (
         <>
