@@ -1,12 +1,16 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Logo from './Logo';
 import Button from './Button';
+import UserContext from '../../context/UserContext';
 
 export default function Login() {
 
     const location = useLocation();
+    const history = useHistory();
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,8 +19,22 @@ export default function Login() {
         password
     };
 
+    function signIn(e) {
+        e.preventDefault();
+        
+        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
+        request.then(response => {
+            setUser(response.data);
+            history.push("/hoje");
+        });
+        request.catch(error => {
+            alert("Email ou senha incorretos")
+            console.log(error);
+        });
+    }
+
     return (
-        <>
+        <form onSubmit={signIn}>
             <Logo />
             <DataBox>
                 <input 
@@ -28,8 +46,8 @@ export default function Login() {
                     value={password} onChange={e => setPassword(e.target.value)}
                 />
             </DataBox>
-            <Button location={location} body={body}/>
-        </>
+            <Button location={location}/>
+        </form>
     );
 }
 

@@ -5,9 +5,7 @@ import UserContext from '../../context/UserContext';
 export default function Navbar() {
 
     const { user } = useContext(UserContext);
-
-    console.log(user.image);
-    
+   
     return (
         <Header>
             <h1>TrackIt</h1>
@@ -42,7 +40,6 @@ const Header = styled.header `
         width: 51px;
         height: 51px;
         border-radius: 98.5px;
-        /* background-image: url(${props => props.picture}); */
     } 
 
     img {

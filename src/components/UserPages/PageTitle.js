@@ -3,11 +3,14 @@ import { GoPlus } from "react-icons/go";
 
 export default function PageTitle({location}){
 
+    const dayjs = require('dayjs');
+    let now = dayjs();
+
     if(location.pathname === "/hoje") {
         return (
             <Title>
                 <div>
-                    <h2>Segunda, 17/05</h2>
+                    <h2>{now.format("dddd, DD/MM")}</h2>
                     <h3>Nenhum hábito concluído ainda</h3>
                 </div>
             </Title>

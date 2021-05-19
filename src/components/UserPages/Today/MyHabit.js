@@ -5,8 +5,8 @@ export default function MyHabit({ key, name }) {
 
     return (
         <>
-            <HabitInfo id={key}>
-                <h2>{name}</h2>
+            <HabitInfo >
+                <h2>Today</h2>
                 <h3>Sequência atual: 3 dias</h3>
                 <h4>Seu recorde: 5 dias</h4>
             </HabitInfo>
