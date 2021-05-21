@@ -11,16 +11,19 @@ import History from './components/UserPages/History/History';
 import DayData from './DayData';
 import UserContext from './contexts/UserContext';
 import DaysContext from './contexts/DaysContext';
+import DonePercentageContext from './contexts/DonePercentageContext';
 
 export default function App() {
 
   const [user,setUser] = useState("");
+  const [donePercentage, setDonePercentage] = useState(0);
   const days = DayData();
 
   return (
     <>
       <UserContext.Provider value={{user, setUser}}>
       <DaysContext.Provider value={days}>
+      <DonePercentageContext.Provider value={{donePercentage, setDonePercentage}}>
         <GlobalStyle />
         <Router>
           <Switch>
@@ -43,6 +46,7 @@ export default function App() {
             </Section>
           </Switch>
         </Router>
+      </DonePercentageContext.Provider>
       </DaysContext.Provider>
       </UserContext.Provider>
     </>

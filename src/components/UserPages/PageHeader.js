@@ -7,8 +7,9 @@ import WeekDays from './Weekdays';
 import { GoPlus } from "react-icons/go";
 import UserContext from '../../contexts/UserContext';
 import DaysContext from '../../contexts/DaysContext';
+import DonePercentageContext from '../../contexts/DonePercentageContext';
 
-export default function PageHeader({location, loadHabits}){
+export default function PageHeader({ location, loadHabits }){
 
     const dayjs = require('dayjs');
     let now = dayjs();
@@ -18,6 +19,7 @@ export default function PageHeader({location, loadHabits}){
     const [selectedDay, setSelectedDay] = useState([]);
     const { user } = useContext(UserContext);
     const days = useContext(DaysContext);
+    const { donePercentage } = useContext(DonePercentageContext);
 
     function addHabit() {
         setShouldAddHabit(true);
@@ -66,7 +68,11 @@ export default function PageHeader({location, loadHabits}){
                     (location.pathname === "/hoje" ? 
                     <div>
                         <h2>{now.format("dddd, DD/MM")}</h2>
-                        <h3>Nenhum hábito concluído ainda</h3>
+                        <h3>
+                            { donePercentage > 0 ? 
+                            `${donePercentage}% dos hábitos concluídos` : 
+                            `Nenhum hábito concluído ainda`} 
+                        </h3>
                     </div> : 
                     <div>
                         <h2>Histórico</h2>
