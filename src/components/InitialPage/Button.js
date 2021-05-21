@@ -1,22 +1,28 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import StartButton from '../../styledComponents/StartButton';
+import Footer from '../../styledComponents/Footer';
+import LoadingContext from '../../contexts/LoadingContext';
+import Loader from "react-loader-spinner";
 
 export default function InitialButton({ location, body, signUpBody }) {
+
+    const { loading } = useContext(LoadingContext);
+
     return (
         <>
-            {location.pathname === "/" ? 
-            <Button>
-                Entrar
-                {/* <Suspense
-                    fallback={<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
-                ></Suspense> */}
-            </Button> : 
-            <Button>
-                Cadastrar
-                {/* <Suspense
-                    fallback={<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
-                ></Suspense> */}
-            </Button>}
+            <StartButton loading={loading}>
+                {loading ?
+                    <Loader
+                        type="ThreeDots"
+                        color="#fff"
+                        height={50}
+                        width={50}
+                        timeout={3000}
+                        /> :
+                (location.pathname === "/" ? "Entrar" : "Cadastrar")
+                }
+            </StartButton>
             <Footer>
                 {location.pathname === "/" ? 
                 <Link to='/cadastro'>
@@ -29,30 +35,3 @@ export default function InitialButton({ location, body, signUpBody }) {
         </>
     );
 }
-
-const Button = styled.button`
-    width: 303px;
-    height: 45px;
-    text-align: center;
-    border-radius: 5px;
-    border: none;
-    background: #52B6FF;
-    font-size: 21px;
-    line-height: 26px;
-    text-align: center;
-    color: #fff;
-`;
-
-const Footer = styled.div `
-    width: 100%;
-    margin-top: 25px;
-
-    p {
-        font-family: 'Lexend Deca', sans-serif;
-        font-size: 14px;
-        text-decoration: underline;
-        line-height: 17px;
-        text-align: center;
-        color: #52B6FF;
-    }
-`;

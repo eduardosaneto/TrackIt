@@ -11,16 +11,8 @@ const AddHabit = styled.div `
     align-items: center;
     border-radius: 5px;
     background: #FFFFFF; 
-
-    /* > div {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    } */
-
-    form > span {
+    
+    fieldset > span {
         width: 100%;
         height: 40px;
         display: flex;

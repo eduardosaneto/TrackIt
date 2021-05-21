@@ -23,7 +23,7 @@ export default function MyTodayHabit({ id, name, done, currentSequence, highestS
                 loadTodayHabits(config);
             });
             request.catch(error => {
-                alert("Deu ruim");
+                alert("Houve uma falha de comunicação com o servidor. Tente novamente em alguns minutos.");
             })
         } else if(done === true){
             const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`,{}, config);
@@ -31,7 +31,7 @@ export default function MyTodayHabit({ id, name, done, currentSequence, highestS
                 loadTodayHabits(config);
             });
             request.catch(error => {
-                alert("Deu ruim");
+                alert("Houve uma falha de comunicação com o servidor. Tente novamente em alguns minutos.");
             })
         }
     }

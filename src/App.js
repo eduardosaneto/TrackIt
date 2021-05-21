@@ -10,12 +10,14 @@ import Habits from './components/UserPages/Habits/Habits';
 import History from './components/UserPages/History/History';
 import DayData from './DayData';
 import UserContext from './contexts/UserContext';
+import LoadingContext from './contexts/LoadingContext';
 import DaysContext from './contexts/DaysContext';
 import DonePercentageContext from './contexts/DonePercentageContext';
 
 export default function App() {
 
   const [user,setUser] = useState("");
+  const [loading, setLoading] = useState(false);
   const [donePercentage, setDonePercentage] = useState(0);
   const days = DayData();
 
@@ -24,6 +26,7 @@ export default function App() {
       <UserContext.Provider value={{user, setUser}}>
       <DaysContext.Provider value={days}>
       <DonePercentageContext.Provider value={{donePercentage, setDonePercentage}}>
+      <LoadingContext.Provider value={{loading, setLoading}}>
         <GlobalStyle />
         <Router>
           <Switch>
@@ -46,6 +49,7 @@ export default function App() {
             </Section>
           </Switch>
         </Router>
+      </LoadingContext.Provider>
       </DonePercentageContext.Provider>
       </DaysContext.Provider>
       </UserContext.Provider>

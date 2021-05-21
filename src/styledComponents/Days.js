@@ -19,11 +19,7 @@ const Days = styled.span `
         border-radius: 5px;
     }
 
-    .select {
-        background: #DBDBDB;
-    }
-
-    .select p {
+    .selected p {
         color: #fff;
     }
 

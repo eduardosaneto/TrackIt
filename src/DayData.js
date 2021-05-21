@@ -2,16 +2,20 @@ export default function DayDayta() {
     
     const days = [
         {
-            id: 1,
+            id: 0,
             weekDay: "D",
         },
         {
-            id: 2,
+            id: 1,
             weekDay: "S",
         },
         {
-            id: 3,
+            id: 2,
             weekDay: "T",
+        },
+        {
+            id: 3,
+            weekDay: "Q",
         },
         {
             id: 4,
@@ -19,14 +23,10 @@ export default function DayDayta() {
         },
         {
             id: 5,
-            weekDay: "Q",
-        },
-        {
-            id: 6,
             weekDay: "S",
         },
         {
-            id: 7,
+            id: 6,
             weekDay: "S",
         },
     ];

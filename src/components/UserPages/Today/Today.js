@@ -14,7 +14,7 @@ export default function Today() {
 
     const location = useLocation();
     const [myCurrentHabits, setMyCurrentHabits] = useState([]);
-    const [itsDone, setItsDone] = useState("");
+    const [itsDone, setItsDone] = useState([]);
     const { user } = useContext(UserContext);
     const { setDonePercentage } = useContext(DonePercentageContext);
 
@@ -39,9 +39,11 @@ export default function Today() {
         };
         loadTodayHabits(config);
 
-    }, [user.token])
+    }, [user.token]);
 
-    setDonePercentage((itsDone.length/myCurrentHabits.length)*100);
+    useEffect(() => {
+        setDonePercentage(parseInt((itsDone.length/myCurrentHabits.length)*100));
+    },[itsDone.length, myCurrentHabits.length, setDonePercentage]);
 
     return (
         <UserSection>

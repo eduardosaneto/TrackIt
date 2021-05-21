@@ -1,13 +1,9 @@
 import { useState,useContext } from 'react';
-// import axios from 'axios';
-// import UserContext from '../../contexts/UserContext';
 import DaysContext from '../../contexts/DaysContext';
-// import { BsTrash } from "react-icons/bs";
 
 export default function Weekdays({day, id, habitDays, shouldAddHabit, selectedDay, setSelectedDay }) {
 
     const [isSelected, setIsSelected] = useState(false);
-    // const { user } = useContext(UserContext);
     const days = useContext(DaysContext);
 
     const weekDays = days.map(item => {
@@ -38,13 +34,13 @@ export default function Weekdays({day, id, habitDays, shouldAddHabit, selectedDa
     return (
         <>
             {shouldAddHabit ? 
-                <div id={id} onClick={selectDay} className={`${isSelected ? "select" : ""}`}>
+                <div id={id} onClick={selectDay} className={`${isSelected ? "selected" : ""}`}>
                     <p>
                         {day}
                     </p>
                 </div> : 
                 (weekDays.map(day => (   
-                    <div key={day.id} className={`${day.habitDay !== undefined ? "select" : ""}`}><p>{day.weekDay}</p></div>                 
+                    <div key={day.id} className={`${day.habitDay !== undefined ? "selected" : ""}`}><p>{day.weekDay}</p></div>                 
                 ))) 
             }
         </>

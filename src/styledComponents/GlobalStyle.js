@@ -55,6 +55,14 @@ const GlobalStyle = createGlobalStyle `
     font-family: 'Lexend Deca', sans-serif;
   }
 
+  .checked {
+        color: #8FC549 !important;
+  }
+
+  .selected {
+        background: #DBDBDB;
+  }
+
 `;
 
 export default GlobalStyle;
