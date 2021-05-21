@@ -51,7 +51,7 @@ export default function Habits() {
                         <Days>
                             <WeekDays habitDays={habit.days}/>
                         </Days>
-                        <DeleteHabit className="erase" id={habit.id} habits={habits} setHabits={setHabits}/>
+                        <DeleteHabit className="erase" id={habit.id} loadHabits={loadHabits}/>
                         {/* <BsTrash className="erase" onClick={deleteHabit}/> */}
                     </Content>
                 ))) :

@@ -36,7 +36,7 @@ const Title = styled.div `
         align-items: center;
         border-radius: 5px;
         border: none;
-        background:  #52B6FF;
+        background: #52B6FF;
         position: absolute;
         right: 0;
     }
