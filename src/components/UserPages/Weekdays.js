@@ -40,7 +40,7 @@ export default function Weekdays({day, id, habitDays, shouldAddHabit, selectedDa
                     </p>
                 </div> : 
                 (weekDays.map(day => (   
-                    <div className={`${day.habitDay !== undefined ? "select" : ""}`}><p>{day.weekDay}</p></div>                 
+                    <div key={day.id} className={`${day.habitDay !== undefined ? "select" : ""}`}><p>{day.weekDay}</p></div>                 
                 ))) 
             }
         </>

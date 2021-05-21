@@ -5,9 +5,8 @@ import Check from '../../../styledComponents/Check';
 import { FaCheck } from "react-icons/fa";
 import UserContext from '../../../contexts/UserContext';
 
-export default function MyHabit({ id, name, currentSequence, highestSequence }) {
+export default function MyHabit({ id, name, done, currentSequence, highestSequence, loadTodayHabits }) {
 
-    const [itsDone, setItsDone] = useState(false);
     const { user } = useContext(UserContext);
 
     function checkHabit() {
@@ -18,24 +17,18 @@ export default function MyHabit({ id, name, currentSequence, highestSequence }) 
             }
         };
 
-        if(itsDone === false){
-
-            setItsDone(true);
-
-            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`,{id}, config);
+        if(done === false){
+            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`,{}, config);
             request.then(response => {
-                alert("Hábito concluido")
+                loadTodayHabits(config);
             });
             request.catch(error => {
                 alert("Deu ruim");
             })
-        } else if(itsDone === true){
-
-            setItsDone(false);
-
-            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`,{id}, config);
+        } else if(done === true){
+            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`,{}, config);
             request.then(response => {
-                alert("Hábito não-concluido")
+                loadTodayHabits(config);
             });
             request.catch(error => {
                 alert("Deu ruim");
@@ -47,10 +40,14 @@ export default function MyHabit({ id, name, currentSequence, highestSequence }) 
         <>
             <HabitInfo id={id}>
                 <h2>{name}</h2>
-                <h3>Sequência atual: {currentSequence} dias</h3>
-                <h4>Seu recorde: {highestSequence} dias</h4>
+                <h3 className={`${done ? "checked" : ""}`}>Sequência atual: {currentSequence} dias</h3>
+                <h4 
+                    className={`${currentSequence < highestSequence || highestSequence === 0 ? "" : "checked"}`}
+                >
+                    Seu recorde: {highestSequence} dias
+                </h4>
             </HabitInfo>
-            <Check id={id} color={itsDone} onClick={checkHabit}>
+            <Check id={id} color={done} onClick={checkHabit}>
                 <FaCheck className="check"/>
             </Check>
         </>

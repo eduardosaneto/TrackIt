@@ -15,13 +15,7 @@ export default function Today() {
     const [myCurrentHabits, setMyCurrentHabits] = useState([]);
     const { user } = useContext(UserContext);
 
-    useEffect(() => {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${user.token}`
-            }
-        };
-
+    function loadTodayHabits(config) {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config);
         request.then(response => {            
             setMyCurrentHabits(response.data);
@@ -29,6 +23,16 @@ export default function Today() {
         request.catch(error => {
             alert("Não foi possível carregar seus hábitos do dia");
         });
+    }
+
+    useEffect(() => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        };
+        loadTodayHabits(config);
+
     }, [user.token])
 
     return (
@@ -36,12 +40,14 @@ export default function Today() {
             <Navbar />
             <PageHeader location={location}/>
                 {myCurrentHabits.map((habit) => (
-                    <TodayContent>
+                    <TodayContent key={habit.id}>
                         <MyHabit 
                             id={habit.id}
                             name={habit.name}
+                            done={habit.done}
                             currentSequence={habit.currentSequence}
                             highestSequence={habit.highestSequence}
+                            loadTodayHabits={loadTodayHabits}
                         />
                     </TodayContent>
                 ))}

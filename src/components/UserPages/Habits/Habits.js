@@ -46,13 +46,11 @@ export default function Habits() {
             <PageHeader location={location} loadHabits={loadHabits}/>
             {isThereAHabit ? 
                 (habits.map(habit => (
-                    <Content>
-                        <h2 key={habit.id}>{habit.name}</h2>
-                        {/* {h.days.map(day => ( */}
+                    <Content key={habit.id}>
+                        <h2>{habit.name}</h2>
                         <Days>
                             <WeekDays habitDays={habit.days}/>
                         </Days>
-                        {/* ))} */}
                         <BsTrash className="erase" />
                     </Content>
                 ))) :
