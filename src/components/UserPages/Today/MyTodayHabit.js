@@ -5,7 +5,7 @@ import Check from '../../../styledComponents/Check';
 import { FaCheck } from "react-icons/fa";
 import UserContext from '../../../contexts/UserContext';
 
-export default function MyHabit({ id, name, done, currentSequence, highestSequence, loadTodayHabits }) {
+export default function MyTodayHabit({ id, name, done, currentSequence, highestSequence, loadTodayHabits }) {
 
     const { user } = useContext(UserContext);
 

@@ -6,7 +6,7 @@ import axios from 'axios';
 import Navbar from '../Navbar';
 import PageHeader from '../PageHeader';
 import FooterMenu from '../FooterMenu';
-import MyHabit from './MyHabit';
+import MyTodayHabit from './MyTodayHabit';
 import UserContext from '../../../contexts/UserContext';
 import DonePercentageContext from '../../../contexts/DonePercentageContext';
 
@@ -49,7 +49,7 @@ export default function Today() {
             <PageHeader location={location} itsDone={itsDone} myCurrentHabits={myCurrentHabits}/>
                 {myCurrentHabits.map((habit) => (
                     <TodayContent key={habit.id}>
-                        <MyHabit 
+                        <MyTodayHabit 
                             id={habit.id}
                             name={habit.name}
                             done={habit.done}

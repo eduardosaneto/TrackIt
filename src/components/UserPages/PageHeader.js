@@ -99,6 +99,7 @@ export default function PageHeader({ location, loadHabits }){
                         <Days>
                             {days.map(day => (
                                 <WeekDays 
+                                    key={day.id}
                                     id={day.id} 
                                     day={day.weekDay} 
                                     shouldAddHabit={shouldAddHabit} 

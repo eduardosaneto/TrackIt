@@ -9,7 +9,7 @@ import Navbar from '../Navbar';
 import PageHeader from '../PageHeader';
 import FooterMenu from '../FooterMenu';
 import WeekDays from '../Weekdays';
-import { BsTrash } from "react-icons/bs";
+import DeleteHabit from './DeleteHabit';
 import UserContext from '../../../contexts/UserContext';
 
 export default function Habits() {
@@ -18,7 +18,7 @@ export default function Habits() {
     const [habits, setHabits] = useState([]);
     const [isThereAHabit, setIsThereAHabit] = useState(false);    
     const { user } = useContext(UserContext);
-    
+
     function loadHabits(config) {            
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
         request.then(response => {
@@ -51,7 +51,8 @@ export default function Habits() {
                         <Days>
                             <WeekDays habitDays={habit.days}/>
                         </Days>
-                        <BsTrash className="erase" />
+                        <DeleteHabit className="erase" id={habit.id} habits={habits} setHabits={setHabits}/>
+                        {/* <BsTrash className="erase" onClick={deleteHabit}/> */}
                     </Content>
                 ))) :
                 <Message>
