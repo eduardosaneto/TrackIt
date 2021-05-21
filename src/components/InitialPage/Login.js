@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Logo from './Logo';
 import Button from './Button';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../contexts/UserContext';
 
 export default function Login() {
 

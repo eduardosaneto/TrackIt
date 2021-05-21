@@ -1,12 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import UserSection from '../../../styledComponents/UserSection';
 import styled from 'styled-components';
 import axios from 'axios';
 import Navbar from '../Navbar';
-import PageTitle from '../PageTitle';
-import Footer from '../Footer';
+import PageHeader from '../PageHeader';
+import FooterMenu from '../FooterMenu';
 import MyHabit from './MyHabit';
-import UserContext from '../../../context/UserContext';
+import UserContext from '../../../contexts/UserContext';
 
 export default function Today() {
 
@@ -32,9 +33,9 @@ export default function Today() {
     }, [user.token])
 
     return (
-        <Section>
+        <UserSection>
             <Navbar />
-            <PageTitle location={location}/>
+            <PageHeader location={location}/>
                 {myHabits.map((habit) => (
                     <Content>
                         <MyHabit 
@@ -43,21 +44,10 @@ export default function Today() {
                         />
                     </Content>
                 ))}
-            <Footer />
-        </Section>
+            <FooterMenu />
+        </UserSection>
     );
 }
-
-const Section = styled.section `
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  padding: 70px 17px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #f2f2f2;
-`;
 
 const Content = styled.div `
     height: 94px;
