@@ -1,54 +1,58 @@
-import styled from 'styled-components';
+import { useState, useContext } from 'react';
+import axios from 'axios';
+import HabitInfo from '../../../styledComponents/HabitInfo';
+import Check from '../../../styledComponents/Check';
 import { FaCheck } from "react-icons/fa";
+import UserContext from '../../../contexts/UserContext';
 
-export default function MyHabit({ key, name }) {
+export default function MyHabit({ id, name, currentSequence, highestSequence }) {
+
+    const [itsDone, setItsDone] = useState(false);
+    const { user } = useContext(UserContext);
+
+    function checkHabit() {
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
+        };
+
+        if(itsDone === false){
+
+            setItsDone(true);
+
+            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`,{id}, config);
+            request.then(response => {
+                alert("Hábito concluido")
+            });
+            request.catch(error => {
+                alert("Deu ruim");
+            })
+        } else if(itsDone === true){
+
+            setItsDone(false);
+
+            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`,{id}, config);
+            request.then(response => {
+                alert("Hábito não-concluido")
+            });
+            request.catch(error => {
+                alert("Deu ruim");
+            })
+        }
+    }
 
     return (
         <>
-            <HabitInfo >
-                <h2>Today</h2>
-                <h3>Sequência atual: 3 dias</h3>
-                <h4>Seu recorde: 5 dias</h4>
+            <HabitInfo id={id}>
+                <h2>{name}</h2>
+                <h3>Sequência atual: {currentSequence} dias</h3>
+                <h4>Seu recorde: {highestSequence} dias</h4>
             </HabitInfo>
-            <Check>
+            <Check id={id} color={itsDone} onClick={checkHabit}>
                 <FaCheck className="check"/>
             </Check>
         </>
     );
 }
-
-const HabitInfo = styled.div `
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
-    h2 {
-        font-size: 20px;
-        line-height: 25px;
-        color: #666;
-        margin-bottom: 7px;
-    }
-
-    h3, h4 {
-        font-size: 13px;
-        line-height: 16px;
-        color: #666;
-    }
-`; 
-
-const Check = styled.div `
-    width: 69px;
-    height: 69px;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #E7E7E7;
-    border-radius: 5px;
-    background: #EBEBEB;
-
-    .check {
-        font-size: 35px;
-        color: #fff;
-    }
-`;
