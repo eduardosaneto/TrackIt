@@ -22,9 +22,9 @@ export default function Habits() {
     function loadHabits(config) {            
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
         request.then(response => {
-            setIsThereAHabit(true);  
+            if (response.data.length > 0) setIsThereAHabit(true);
             setHabits(response.data);
-        });
+         });
         request.catch(error => {
             alert("Não foi possível carregar seus hábitos do dia");
         });
@@ -52,7 +52,6 @@ export default function Habits() {
                             <WeekDays habitDays={habit.days}/>
                         </Days>
                         <DeleteHabit className="erase" id={habit.id} loadHabits={loadHabits}/>
-                        {/* <BsTrash className="erase" onClick={deleteHabit}/> */}
                     </Content>
                 ))) :
                 <Message>
