@@ -3,7 +3,6 @@ import axios from 'axios';
 import AddHabit from '../../../styledComponents/AddHabit';
 import Days from '../../../styledComponents/Days';
 import WeekDays from '../Weekdays';
-import UserContext from '../../../contexts/UserContext';
 import DaysContext from '../../../contexts/DaysContext';
 import LoadingContext from '../../../contexts/LoadingContext';
 
@@ -11,10 +10,11 @@ export default function AddNewHabit( { shouldAddHabit, setShouldAddHabit, loadHa
 
     const [addHabitName, setAddHabitName] = useState("");
     const [selectedDay, setSelectedDay] = useState([]);
-    const { user } = useContext(UserContext);
     const days = useContext(DaysContext);
     const { loading, setLoading } = useContext(LoadingContext);
-
+    const localstorage = JSON.parse(localStorage.user);
+    const token = localstorage.token;
+    
     function cancel() {
         setShouldAddHabit(false);
     }
@@ -32,7 +32,7 @@ export default function AddNewHabit( { shouldAddHabit, setShouldAddHabit, loadHa
 
         const config = {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${token}`
             }
         };
 

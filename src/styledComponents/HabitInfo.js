@@ -16,13 +16,6 @@ const HabitInfo = styled.div `
     h3, h4 {
         font-size: 13px;
         line-height: 16px;
-    }
-
-    h3 {
-        color: #666;
-    }
-
-    h4 {
         color: #666;
     }
 `; 

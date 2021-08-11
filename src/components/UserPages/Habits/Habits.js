@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import UserSection from '../../../styledComponents/UserSection';
 import Content from '../../../styledComponents/Content';
@@ -10,14 +10,14 @@ import PageHeader from '../PageHeader';
 import FooterMenu from '../FooterMenu';
 import WeekDays from '../Weekdays';
 import DeleteHabit from './DeleteHabit';
-import UserContext from '../../../contexts/UserContext';
 
 export default function Habits() {
 
     const location = useLocation();
     const [habits, setHabits] = useState([]);
     const [isThereAHabit, setIsThereAHabit] = useState(false);    
-    const { user } = useContext(UserContext);
+    const localstorage = JSON.parse(localStorage.user);
+    const token = localstorage.token;
 
     function loadHabits(config) {            
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
@@ -33,12 +33,12 @@ export default function Habits() {
     useEffect(() => {
         const config = {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${token}`
             }
         };
         loadHabits(config);
         
-    }, [user.token])
+    }, [token])
 
     return (
         <UserSection>

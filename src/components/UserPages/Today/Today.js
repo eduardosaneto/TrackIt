@@ -7,7 +7,6 @@ import Navbar from '../Navbar';
 import PageHeader from '../PageHeader';
 import FooterMenu from '../FooterMenu';
 import MyTodayHabit from './MyTodayHabit';
-import UserContext from '../../../contexts/UserContext';
 import DonePercentageContext from '../../../contexts/DonePercentageContext';
 
 export default function Today() {
@@ -15,8 +14,9 @@ export default function Today() {
     const location = useLocation();
     const [myCurrentHabits, setMyCurrentHabits] = useState([]);
     const [itsDone, setItsDone] = useState([]);
-    const { user } = useContext(UserContext);
     const { setDonePercentage } = useContext(DonePercentageContext);
+    const localstorage = JSON.parse(localStorage.user);
+    const token = localstorage.token;
 
     function loadTodayHabits(config) {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config);
@@ -34,12 +34,12 @@ export default function Today() {
     useEffect(() => {
         const config = {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${token}`
             }
         };
         loadTodayHabits(config);
 
-    }, [user.token]);
+    }, [token]);
 
     useEffect(() => {
         setDonePercentage(parseInt((itsDone.length/myCurrentHabits.length)*100));

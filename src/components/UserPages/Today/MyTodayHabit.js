@@ -1,19 +1,18 @@
-import { useContext } from 'react';
 import axios from 'axios';
 import HabitInfo from '../../../styledComponents/HabitInfo';
 import Check from '../../../styledComponents/Check';
 import { FaCheck } from "react-icons/fa";
-import UserContext from '../../../contexts/UserContext';
 
 export default function MyTodayHabit({ id, name, done, currentSequence, highestSequence, loadTodayHabits }) {
 
-    const { user } = useContext(UserContext);
+    const localstorage = JSON.parse(localStorage.user);
+    const token = localstorage.token;
 
     function checkHabit() {
 
         const config = {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${token}`
             }
         };
 

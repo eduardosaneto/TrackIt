@@ -1,19 +1,18 @@
-import { useContext } from 'react';
 import axios from 'axios';
-import UserContext from '../../../contexts/UserContext';
 import { BsTrash } from "react-icons/bs";
 import { confirmAlert } from 'react-confirm-alert';
 import '../../../assets/styles/react-confirm-alert.css';
 
 export default function DeleteHabit( { id, loadHabits } ) {
 
-    const { user } = useContext(UserContext);
+    const localstorage = JSON.parse(localStorage.user);
+    const token = localstorage.token;
 
     function deleteHabit() {
 
         const config = {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${token}`
             }
         };
         const request = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, config);

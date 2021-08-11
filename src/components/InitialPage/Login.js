@@ -16,6 +16,8 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    if(localStorage.length !== 0) history.push("/hoje");
+    
     const body = {
         email,
         password
@@ -25,10 +27,12 @@ export default function Login() {
         e.preventDefault();
 
         setLoading(true);
-        
+
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
         request.then(response => {
             setUser(response.data);
+            const userSerial = JSON.stringify(response.data);
+            localStorage.setItem("user",userSerial);
             history.push("/hoje");
             setLoading(false);
         });

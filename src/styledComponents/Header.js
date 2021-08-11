@@ -23,7 +23,6 @@ const Header = styled.header `
     div {
         width: 51px;
         height: 51px;
-        border-radius: 98.5px;
     } 
 
     img {
@@ -32,6 +31,7 @@ const Header = styled.header `
         border-radius: 98.5px;
         object-fit: cover;
         background-position: center;
+        cursor: pointer;
     }
 `;
 
