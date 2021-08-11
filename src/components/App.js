@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState } from 'react';
-import GlobalStyle from './styledComponents/GlobalStyle';
-import Section from './styledComponents/Section';
-import Login from './components/InitialPage/Login';
-import Register from './components/InitialPage/Register';
-import Today from './components/UserPages/Today/Today';
-import Habits from './components/UserPages/Habits/Habits';
-import History from './components/UserPages/History/History';
-import DayData from './DayData';
-import UserContext from './contexts/UserContext';
-import LoadingContext from './contexts/LoadingContext';
-import DaysContext from './contexts/DaysContext';
-import DonePercentageContext from './contexts/DonePercentageContext';
+import GlobalStyle from '../styledComponents/GlobalStyle';
+import Section from '../styledComponents/Section';
+import Login from './InitialPage/Login';
+import Register from './InitialPage/Register';
+import Today from './UserPages/Today/Today';
+import Habits from './UserPages/Habits/Habits';
+import History from './UserPages/History/History';
+import DayData from '../DayData';
+import UserContext from '../contexts/UserContext';
+import LoadingContext from '../contexts/LoadingContext';
+import DaysContext from '../contexts/DaysContext';
+import DonePercentageContext from '../contexts/DonePercentageContext';
 
 export default function App() {
 

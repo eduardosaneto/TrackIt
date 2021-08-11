@@ -1,5 +1,5 @@
 import LogoBox from '../../styledComponents/LogoBox';
-import TrackItLogo from '../../images/TrackItLogo.JPG';
+import TrackItLogo from '../../assets/images/TrackItLogo.JPG';
 
 export default function Logo() {
     return (

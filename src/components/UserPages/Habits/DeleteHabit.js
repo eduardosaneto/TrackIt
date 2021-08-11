@@ -3,7 +3,7 @@ import axios from 'axios';
 import UserContext from '../../../contexts/UserContext';
 import { BsTrash } from "react-icons/bs";
 import { confirmAlert } from 'react-confirm-alert';
-import '../../../css/react-confirm-alert.css'
+import '../../../assets/styles/react-confirm-alert.css';
 
 export default function DeleteHabit( { id, loadHabits } ) {
 
