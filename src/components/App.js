@@ -8,7 +8,7 @@ import Register from './InitialPage/Register';
 import Today from './UserPages/Today/Today';
 import Habits from './UserPages/Habits/Habits';
 import History from './UserPages/History/History';
-import DayData from '../DayData';
+import DayData from '../components/WeekDB/DayData';
 import UserContext from '../contexts/UserContext';
 import LoadingContext from '../contexts/LoadingContext';
 import DaysContext from '../contexts/DaysContext';
