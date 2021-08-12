@@ -28,7 +28,7 @@ export default function Login() {
 
         setLoading(true);
 
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
+        const request = axios.post(process.env.REACT_APP_LOGIN, body);
         request.then(response => {
             setUser(response.data);
             const userSerial = JSON.stringify(response.data);

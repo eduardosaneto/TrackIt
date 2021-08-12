@@ -20,7 +20,7 @@ export default function Habits() {
     const token = localstorage.token;
 
     function loadHabits(config) {            
-        const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
+        const request = axios.get(process.env.REACT_APP_HABITS, config);
         request.then(response => {
             if (response.data.length > 0) setIsThereAHabit(true);
             setHabits(response.data);

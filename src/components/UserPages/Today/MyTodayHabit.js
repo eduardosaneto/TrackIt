@@ -17,7 +17,7 @@ export default function MyTodayHabit({ id, name, done, currentSequence, highestS
         };
 
         if(done === false){
-            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`,{}, config);
+            const request = axios.post(`${process.env.REACT_APP_HABITS}/${id}/check`,{}, config);
             request.then(response => {
                 loadTodayHabits(config);
             });
@@ -25,7 +25,7 @@ export default function MyTodayHabit({ id, name, done, currentSequence, highestS
                 alert("Houve uma falha de comunicação com o servidor. Tente novamente em alguns minutos.");
             })
         } else if(done === true){
-            const request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`,{}, config);
+            const request = axios.post(`${process.env.REACT_APP_HABITS}/${id}/uncheck`,{}, config);
             request.then(response => {
                 loadTodayHabits(config);
             });

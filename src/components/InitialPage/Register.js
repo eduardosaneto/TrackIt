@@ -28,7 +28,7 @@ export default function Register() {
         
         setLoading(true);
 
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", body);
+        const request = axios.post(process.env.REACT_APP_SIGNUP, body);
         request.then(response => {
             alert("Seu cadastro foi concluído com sucesso");
             history.push("/");

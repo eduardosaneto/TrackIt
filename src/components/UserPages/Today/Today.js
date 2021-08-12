@@ -19,7 +19,7 @@ export default function Today() {
     const token = localstorage.token;
 
     function loadTodayHabits(config) {
-        const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config);
+        const request = axios.get(process.env.REACT_APP_TODAY, config);
         request.then(response => {            
             setMyCurrentHabits(response.data);
             const todayHabitsStatus = response.data.map(status => status.done);

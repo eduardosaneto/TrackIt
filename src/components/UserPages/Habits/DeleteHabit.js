@@ -15,7 +15,7 @@ export default function DeleteHabit( { id, loadHabits } ) {
                 Authorization: `Bearer ${token}`
             }
         };
-        const request = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, config);
+        const request = axios.delete(`${process.env.REACT_APP_HABITS}/${id}`, config);
         request.then(response => {
             loadHabits(config);      
         });

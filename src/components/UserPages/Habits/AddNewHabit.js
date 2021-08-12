@@ -41,7 +41,7 @@ export default function AddNewHabit( { shouldAddHabit, setShouldAddHabit, loadHa
             days: selectedDay
         };
 
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", body, config);
+        const request = axios.post(process.env.REACT_APP_HABITS, body, config);
         request.then(response => {
             alert("hábito adicionado com sucesso")
             setShouldAddHabit(false);
