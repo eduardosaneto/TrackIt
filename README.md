@@ -1,4 +1,4 @@
-# Trackit:
+# Trackit
 
 An application to manage and track your activities.
 
